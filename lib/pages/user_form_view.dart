@@ -19,7 +19,7 @@ class UserForm extends StatelessWidget {
           body: Center(
             child: Container(
               width: constraints.maxWidth * .7,
-              height: constraints.maxWidth * .7,
+              height: constraints.maxWidth * .8,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20.0),
