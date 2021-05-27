@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class BuildTextFormFieldComponent extends StatelessWidget {
   final String? labelText;
-  final Function(String)? onValidator;
-  final Function(String)? onChanged;
+  final Function? onValidate;
+  final Function? onChanged;
 
   const BuildTextFormFieldComponent({
     Key? key,
     required this.labelText,
-    this.onValidator,
+    this.onValidate,
     this.onChanged,
   }) : super(key: key);
 
@@ -17,7 +17,7 @@ class BuildTextFormFieldComponent extends StatelessWidget {
     return Container(
       child: TextFormField(
         decoration: InputDecoration(labelText: labelText),
-        validator: (value) => onValidator!(value!),
+        validator: (value) => onValidate!(value),
         onChanged: (value) => onChanged!(value),
       ),
     );
