@@ -1,16 +1,43 @@
-# user_form
+<h1 align="center">
+   <br>Cubos Academy<br><br>
+</h1>
 
-A new Flutter project.
+<p align="center"> Counter com MVC </p> <br>
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+[//]: # (Adicione seus gifs / imagens aqui:)
 
-A few resources to get you started if this is your first Flutter project:
+<p align="center"> 
+  <img src="github/screenshots/user-form.gif" alt="demo" height="600"> 
+</p>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<p align="center">
+  <br>
+  <img src="github/screenshots/001.png" alt="demo" height="500">
+  <img src="github/screenshots/002.png" alt="demo" height="500">
+  <img src="github/screenshots/003.png" alt="demo" height="500">
+</p>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<hr />
+
+## **Informações:**
+[//]: # (Descreva seu objetivo e o que foi usado no projeto:)
+  
+<font color="orange"><i><h4><strong>Foi criado estrutura MVC neste app.</strong></h3></i></font>
+
+* <i><h3><strong>Desafio</strong></h3></i>
+  
+* Criar um formulário com algumas validações.
+  
+* Criar responsivo
+
+<hr>
+
+
+
+## **Linguagens e Ferramentas:**
+[//]: # (Adicione os recursos do seu projeto aqui:)
+
+- <code><img height="20" src="https://github.com/brandaoti/organizar-github/blob/main/img/flutter.png"></code> **Flutter**
+- <code><img height="20" src="https://github.com/brandaoti/organizar-github/blob/main/img/dart.png"></code> **Dart**
+
