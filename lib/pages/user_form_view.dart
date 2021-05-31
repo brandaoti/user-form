@@ -50,35 +50,77 @@ class UserForm extends StatelessWidget {
 
                       //
                       SizedBox(height: _size.height * .05),
-                      ElevatedButton(
-                        child: Text('Logar'),
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(38, 38),
-                        ),
-                        onPressed: () {
-                          if (_controller.isValid) {
-                            showDialog(
-                              context: context,
-                              builder: (_) {
-                                return AlertDialog(
-                                  title: Text('Bem-Vindo'),
-                                  content: Text('${_controller.name} ${_controller.lastname}'),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  actions: [
-                                    IconButton(
-                                      icon: Icon(Icons.save),
-                                      onPressed: () {
-                                        _controller.saveUser;
-                                      },
-                                    ),
-                                  ],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ElevatedButton.icon(
+                            icon: Icon(Icons.login),
+                            label: Text('Logar'),
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(38, 38),
+                            ),
+                            onPressed: () {
+                              if (_controller.isValid) {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) {
+                                    final _name = '${_controller.name}';
+                                    final _lastname = '${_controller.lastname}';
+
+                                    return AlertDialog(
+                                      title: Text('Bem-Vindo'),
+                                      content: Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: Text('$_name $_lastname'),
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                      ),
+                                      actions: [
+                                        IconButton(
+                                          icon: Icon(Icons.save),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            _controller.saveUser;
+
+                                            final user = 'Usuário: $_name $_lastname';
+
+                                            final snackBar = SnackBar(
+                                              content: Text(user),
+                                              backgroundColor: Colors.green,
+                                            );
+
+                                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
                                 );
-                              },
-                            );
-                          }
-                        },
+                              }
+                            },
+                          ),
+                          ElevatedButton.icon(
+                            icon: Icon(Icons.save_outlined),
+                            label: Text('Dados'),
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (_) {
+                                  return FutureBuilder<String>(
+                                    future: _controller.fullName,
+                                    builder: (context, snapshot) {
+                                      return AlertDialog(
+                                        title: Text('Usuário'),
+                                        content: Text(snapshot.data ?? ''),
+                                      );
+                                    },
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),

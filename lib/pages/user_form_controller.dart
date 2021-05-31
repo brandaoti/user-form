@@ -41,4 +41,7 @@ class UserFormController {
 
   // Save internal storage
   get saveUser => _model.getSaveUser();
+
+  // Recuperar dados
+  Future<String> get fullName => _model.getFullName();
 }

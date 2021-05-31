@@ -19,6 +19,7 @@ class BuildTextFormFieldComponent extends StatelessWidget {
         decoration: InputDecoration(labelText: labelText),
         validator: (value) => onValidate!(value),
         onChanged: (value) => onChanged!(value),
+        maxLength: 20,
       ),
     );
   }

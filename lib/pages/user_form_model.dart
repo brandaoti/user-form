@@ -26,4 +26,8 @@ class UserFormModel {
 
     _sharedPreferences.saveUser(_name!, _lastname!);
   }
+
+  Future<String> getFullName() {
+    return _sharedPreferences.getUserFullName();
+  }
 }
