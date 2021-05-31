@@ -18,63 +18,69 @@ class UserForm extends StatelessWidget {
           ),
           body: Center(
             child: Container(
-              width: constraints.maxWidth * .7,
-              height: constraints.maxWidth * .8,
+              width: constraints.maxWidth * .8,
+              height: constraints.maxHeight * .6,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(16.0),
               ),
               constraints: BoxConstraints(
                 maxWidth: 400,
-                maxHeight: 380,
+                maxHeight: 300,
               ),
-              child: SingleChildScrollView(
-                child: Form(
-                  key: _controller.formKey,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(Icons.account_circle_outlined, size: 54),
-                        BuildTextFormFieldComponent(
-                          labelText: 'Nome',
-                          onValidate: (String value) => _controller.onValidateName(value),
-                          onChanged: (String value) => _controller.onChangedName(value),
-                        ),
+              child: Form(
+                key: _controller.formKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // Icon(Icons.account_circle_outlined, size: 54),
+                      BuildTextFormFieldComponent(
+                        labelText: 'Nome',
+                        onValidate: (String value) => _controller.onValidateName(value),
+                        onChanged: (String value) => _controller.onChangedName(value),
+                      ),
 
-                        BuildTextFormFieldComponent(
-                          labelText: 'Sobrenome',
-                          onValidate: (String value) => _controller.onValidateLastname(value),
-                          onChanged: (String value) => _controller.onChangedLastname(value),
-                        ),
+                      BuildTextFormFieldComponent(
+                        labelText: 'Sobrenome',
+                        onValidate: (String value) => _controller.onValidateLastname(value),
+                        onChanged: (String value) => _controller.onChangedLastname(value),
+                      ),
 
-                        //
-                        SizedBox(height: _size.height * .05),
-                        ElevatedButton(
-                          child: Text('Logar'),
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: Size(38, 38),
-                          ),
-                          onPressed: () {
-                            if (_controller.isValid) {
-                              showDialog(
-                                context: context,
-                                builder: (_) {
-                                  return AlertDialog(
-                                    title: Text('Bem-Vindo'),
-                                    content: Text('${_controller.name} ${_controller.lastname}'),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
+                      //
+                      SizedBox(height: _size.height * .05),
+                      ElevatedButton(
+                        child: Text('Logar'),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(38, 38),
+                        ),
+                        onPressed: () {
+                          if (_controller.isValid) {
+                            showDialog(
+                              context: context,
+                              builder: (_) {
+                                return AlertDialog(
+                                  title: Text('Bem-Vindo'),
+                                  content: Text('${_controller.name} ${_controller.lastname}'),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  actions: [
+                                    IconButton(
+                                      icon: Icon(Icons.save),
+                                      onPressed: () {
+                                        _controller.saveUser;
+                                      },
                                     ),
-                                  );
-                                },
-                              );
-                            }
-                          },
-                        ),
-                      ],
-                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        },
+                      ),
+                    ],
                   ),
                 ),
               ),
