@@ -38,4 +38,10 @@ class UserFormController {
 
   // Lastname changed
   onChangedLastname(String value) => _model.setLastname = value;
+
+  // Save internal storage
+  get saveUser => _model.getSaveUser();
+
+  // Recuperar dados
+  Future<String> get fullName => _model.getFullName();
 }
