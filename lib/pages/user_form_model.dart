@@ -6,7 +6,10 @@ class UserFormModel {
   String? _name;
   String? _lastname;
 
-  final InternalStorageAdapter internalStorage = SecureStorageAdapter();
+  final InternalStorageAdapter internalStorage;
+
+  UserFormModel({InternalStorageAdapter? adapter})
+      : internalStorage = adapter ?? SecureStorageAdapter();
 
   get getName => _name;
 
