@@ -1,6 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:user_form/shared/repository/internal_storage_adapter.dart';
 
-class SecureStorageAdapter {
+class SecureStorageAdapter extends InternalStorageAdapter {
   final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
 
   void saveUser(String name, String lastname) async {
