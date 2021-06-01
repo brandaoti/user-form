@@ -1,11 +1,11 @@
 //
 
-import 'package:user_form/shared/repository/shared_preferences.dart';
+import 'package:user_form/shared/repository/shared_preferences_adapter.dart';
 
 class UserFormModel {
   String? _name;
   String? _lastname;
-  final InternalSharedPreferences _sharedPreferences = InternalSharedPreferences();
+  final SharedPreferencesAdapter _sharedPreferences = SharedPreferencesAdapter();
 
   get getName => _name;
 

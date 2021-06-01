@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class InternalSharedPreferences {
+class SharedPreferencesAdapter {
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   void saveUser(String name, String lastname) async {
@@ -8,6 +8,7 @@ class InternalSharedPreferences {
 
     internalStorage.setString('name', name);
     internalStorage.setString('lastname', lastname);
+    print('Dados salvo');
   }
 
   Future<String> getUserFullName() async {
