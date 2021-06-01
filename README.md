@@ -2,20 +2,23 @@
    <br>Cubos Academy<br><br>
 </h1>
 
-<p align="center"> Counter com MVC </p> <br>
+<p align="center"> User Form com MVC </p> <br>
 
 
 [//]: # (Adicione seus gifs / imagens aqui:)
 
 <p align="center"> 
-  <img src="github/screenshots/user-form.gif" alt="demo" height="600"> 
+  <img src="github/screenshots/user-form.gif" alt="demo" height="400"> 
+</p>
+<p align="center"> 
+  <img src="github/screenshots/user-form-responsivo.gif" alt="demo" height="300"> 
 </p>
 
 <p align="center">
   <br>
-  <img src="github/screenshots/001.png" alt="demo" height="500">
-  <img src="github/screenshots/002.png" alt="demo" height="500">
-  <img src="github/screenshots/003.png" alt="demo" height="500">
+  <img src="github/screenshots/001.png" alt="demo" height="400">
+  <img src="github/screenshots/002.png" alt="demo" height="400">
+  <img src="github/screenshots/003.png" alt="demo" height="400">
 </p>
 
 <hr />
