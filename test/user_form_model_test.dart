@@ -13,7 +13,7 @@ void main() {
 
     model.getSaveUser();
 
-    expect(model.currentUser(), completion('Ceyle Brandão'));
+    expect(model.getCurrentUser(), completion('Ceyle Brandão'));
   });
 }
 

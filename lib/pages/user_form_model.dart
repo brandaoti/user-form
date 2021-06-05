@@ -1,3 +1,4 @@
+import 'package:user_form/shared/model/user.dart';
 import 'package:user_form/shared/repository/internal_storage_adapter.dart';
 import 'package:user_form/shared/repository/secure_storage_adapter.dart';
 import 'package:user_form/shared/repository/shared_preferences_adapter.dart';
@@ -6,6 +7,8 @@ import 'package:user_form/shared/repository/sql_adapter.dart';
 class UserFormModel {
   String? _name;
   String? _lastname;
+
+  User? user;
 
   final InternalStorageAdapter internalStorage;
 
@@ -41,11 +44,13 @@ class UserFormModel {
     return internalStorage.currentUser();
   }
 
-  String currentUser() {
-    if ((_name != null) && (_lastname != null)) {
-      return "$_name $_lastname";
-    } else {
-      return 'Nenhum usuário encontrado!';
-    }
+  Future<String> fullName() {
+    return internalStorage.currentUser();
+
+    // if ((_name != null) && (_lastname != null)) {
+    //   return "$_name $_lastname";
+    // } else {
+    //   return 'Nenhum usuário encontrado!';
+    // }
   }
 }

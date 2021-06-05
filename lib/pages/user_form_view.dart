@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:user_form/pages/user_form_controller.dart';
+import 'package:user_form/pages/user_form_view_model.dart';
 import 'package:user_form/shared/components/text_form_field_component.dart';
 
 class UserForm extends StatelessWidget {
