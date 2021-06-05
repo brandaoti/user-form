@@ -10,7 +10,7 @@ class SecureStorageAdapter extends InternalStorageAdapter {
     print('Dados securo');
   }
 
-  Future<String> getFullName() async {
+  Future<String> currentUser() async {
     String? name = await _secureStorage.read(key: 'name');
     String? lastname = await _secureStorage.read(key: 'lastname');
 
@@ -20,4 +20,7 @@ class SecureStorageAdapter extends InternalStorageAdapter {
       return 'Dados não seguros';
     }
   }
+
+  @override
+  void deleteUser() {}
 }

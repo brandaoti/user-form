@@ -32,8 +32,20 @@ class UserFormModel {
     internalStorage.saveUser(_name!, _lastname!);
   }
 
-  Future<String> getFullName() {
+  void deleteUser() {
+    internalStorage.deleteUser();
+  }
+
+  Future<String> getCurrentUser() {
     // return _sharedPreferences.getUserFullName();
-    return internalStorage.getFullName();
+    return internalStorage.currentUser();
+  }
+
+  String currentUser() {
+    if ((_name != null) && (_lastname != null)) {
+      return "$_name $_lastname";
+    } else {
+      return 'Nenhum usuário encontrado!';
+    }
   }
 }

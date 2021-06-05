@@ -31,14 +31,19 @@ class SqlAdapter extends InternalStorageAdapter {
   }
 
   @override
-  Future<String> getFullName() async {
+  Future<String> currentUser() async {
     final Database db = await database;
 
-    var data = await db.query('User');
+    var data = await db.query(
+      'User',
+      columns: ['rowid', 'name', 'lastname'],
+      // where: 'rowid = ?',
+      // whereArgs: [2],
+    );
 
     if (data.isNotEmpty) {
-      final user = User.fromMap(data.first);
-      return user.name! + ' ' + user.lastname!;
+      final user = User.fromMap(data.last);
+      return '${user.rowId} ' + user.name! + ' ' + user.lastname!;
     } else {
       return 'Usuário não encontrado!';
     }
@@ -48,11 +53,19 @@ class SqlAdapter extends InternalStorageAdapter {
   void saveUser(String name, String lastname) async {
     final Database db = await database;
 
-    var user = {
-      'name': name,
-      'lastname': lastname,
-    };
+    final _user = User(name: name, lastname: lastname);
+
+    Map<String, dynamic> user = _user.toMap();
 
     await db.insert('User', user);
+  }
+
+  @override
+  void deleteUser() async {
+    final Database db = await database;
+
+    var deleteSQL = 'DELETE FROM User WHERE rowid = (SELECT MAX(rowid) FROM User)';
+
+    await db.rawDelete(deleteSQL);
   }
 }
