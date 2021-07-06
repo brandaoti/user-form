@@ -1,6 +1,7 @@
 import 'package:user_form/shared/repository/internal_storage_adapter.dart';
 import 'package:user_form/shared/repository/secure_storage_adapter.dart';
 import 'package:user_form/shared/repository/shared_preferences_adapter.dart';
+import 'package:user_form/shared/repository/sql_adapter.dart';
 
 class UserFormModel {
   String? _name;
@@ -8,8 +9,7 @@ class UserFormModel {
 
   final InternalStorageAdapter internalStorage;
 
-  UserFormModel({InternalStorageAdapter? adapter})
-      : internalStorage = adapter ?? SecureStorageAdapter();
+  UserFormModel({InternalStorageAdapter? adapter}) : internalStorage = adapter ?? SqlAdapter();
 
   get getName => _name;
 
@@ -32,8 +32,20 @@ class UserFormModel {
     internalStorage.saveUser(_name!, _lastname!);
   }
 
-  Future<String> getFullName() {
+  void deleteUser() {
+    internalStorage.deleteUser();
+  }
+
+  Future<String> getCurrentUser() {
     // return _sharedPreferences.getUserFullName();
-    return internalStorage.getFullName();
+    return internalStorage.currentUser();
+  }
+
+  String currentUser() {
+    if ((_name != null) && (_lastname != null)) {
+      return "$_name $_lastname";
+    } else {
+      return 'Nenhum usuário encontrado!';
+    }
   }
 }
