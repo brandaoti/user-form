@@ -13,7 +13,7 @@ void main() {
 
     model.getSaveUser();
 
-    expect(model.getFullName(), completion('Ceyle Brandão'));
+    expect(model.currentUser(), completion('Ceyle Brandão'));
   });
 }
 
@@ -22,7 +22,7 @@ class MockInternalStorage extends InternalStorageAdapter {
   String? lastname;
 
   @override
-  Future<String> getFullName() {
+  Future<String> currentUser() {
     if ((name != null) && (lastname != null)) {
       return Future.value(name! + ' ' + lastname!);
     } else {
@@ -35,4 +35,7 @@ class MockInternalStorage extends InternalStorageAdapter {
     this.name = name;
     this.lastname = lastname;
   }
+
+  @override
+  void deleteUser() {}
 }

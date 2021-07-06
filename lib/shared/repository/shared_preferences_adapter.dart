@@ -12,7 +12,7 @@ class SharedPreferencesAdapter extends InternalStorageAdapter {
     print('Dados salvo');
   }
 
-  Future<String> getFullName() async {
+  Future<String> currentUser() async {
     final internalPrefs = await _prefs;
 
     String? name = internalPrefs.getString('name');
@@ -23,4 +23,7 @@ class SharedPreferencesAdapter extends InternalStorageAdapter {
     }
     return 'Dados não encontrado!';
   }
+
+  @override
+  void deleteUser() {}
 }

@@ -13,9 +13,19 @@ class UserFormController {
 
   String get lastname => _model.getLastname;
 
-  // * Form and Field Validation
+  String? get currentUser => _model.currentUser();
 
-  // Validate name
+  Future<String> get getCurrentUser => _model.getCurrentUser();
+
+  get saveUser => _model.getSaveUser();
+
+  get deleteUser => _model.deleteUser();
+
+  onChangedName(String value) => _model.setName = value;
+
+  onChangedLastname(String value) => _model.setLastname = value;
+
+  // * Form and Field Validation
   String? onValidateName(String value) {
     if (value.isEmpty) {
       return 'Informe o seu nome!';
@@ -25,23 +35,10 @@ class UserFormController {
     return null;
   }
 
-  // Validate lastname
   String? onValidateLastname(String value) {
     if (value.isEmpty) {
       return 'Informe o seu sobrenome!';
     }
     return null;
   }
-
-  // Name changed
-  onChangedName(String value) => _model.setName = value;
-
-  // Lastname changed
-  onChangedLastname(String value) => _model.setLastname = value;
-
-  // Save internal storage
-  get saveUser => _model.getSaveUser();
-
-  // Recuperar dados
-  Future<String> get fullName => _model.getFullName();
 }

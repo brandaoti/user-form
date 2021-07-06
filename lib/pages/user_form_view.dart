@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:user_form/pages/user_form_controller.dart';
+import 'package:user_form/pages/user_form_view_model.dart';
 import 'package:user_form/shared/components/text_form_field_component.dart';
+import 'package:user_form/shared/model/user.dart';
 
 class UserForm extends StatelessWidget {
   final _controller = UserFormController();
-
+  User? user;
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -108,11 +109,21 @@ class UserForm extends StatelessWidget {
                                 context: context,
                                 builder: (_) {
                                   return FutureBuilder<String>(
-                                    future: _controller.fullName,
+                                    future: _controller.getCurrentUser,
                                     builder: (context, snapshot) {
                                       return AlertDialog(
                                         title: Text('Usuário'),
                                         content: Text(snapshot.data ?? ''),
+                                        actions: [
+                                          IconButton(
+                                            icon: Icon(Icons.delete),
+                                            onPressed: () {
+                                              _controller.deleteUser;
+
+                                              Navigator.pop(context);
+                                            },
+                                          ),
+                                        ],
                                       );
                                     },
                                   );
