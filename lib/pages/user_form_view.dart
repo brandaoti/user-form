@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:user_form/pages/user_form_view_model.dart';
 import 'package:user_form/shared/components/text_form_field_component.dart';
+import 'package:user_form/shared/model/user.dart';
 
 class UserForm extends StatelessWidget {
   final _controller = UserFormController();
-
+  User? user;
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:user_form/pages/user_form_model.dart';
 
@@ -9,9 +7,13 @@ class UserFormController {
 
   // validate form
   GlobalKey get formKey => _formKey;
+  bool get isValid => _formKey.currentState!.validate();
 
   String get name => _model.getName;
+
   String get lastname => _model.getLastname;
+
+  String? get currentUser => _model.currentUser();
 
   Future<String> get getCurrentUser => _model.getCurrentUser();
 
@@ -22,8 +24,6 @@ class UserFormController {
   onChangedName(String value) => _model.setName = value;
 
   onChangedLastname(String value) => _model.setLastname = value;
-
-  bool get isValid => _formKey.currentState!.validate();
 
   // * Form and Field Validation
   String? onValidateName(String value) {
